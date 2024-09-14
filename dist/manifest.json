@@ -1,0 +1,22 @@
+{
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "name": "Quick browser's links",
+    "description": "Manage your last history and favorite links",
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Quick browser's links",
+        "default_icon": {
+            "16": "/images/chrome-icon.png",
+            "32": "/images/chrome-icon.png",
+            "48": "/images/chrome-icon.png",
+            "128": "/images/chrome-icon.png"
+        }
+    },
+    "icons": {
+        "16": "/images/chrome-icon.png",
+        "32": "/images/chrome-icon.png",
+        "48": "/images/chrome-icon.png",
+        "128": "/images/chrome-icon.png"
+    }
+}
