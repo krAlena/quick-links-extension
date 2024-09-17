@@ -1,0 +1,1 @@
+chrome.runtime.onMessage.addListener(((e,t,n)=>{"getHTML"===e.action&&n({html:document.documentElement.outerHTML})}));

@@ -18,5 +18,18 @@
         "32": "/images/chrome-icon.png",
         "48": "/images/chrome-icon.png",
         "128": "/images/chrome-icon.png"
+    },
+    "permissions": ["tabs", "activeTab", "scripting", "storage", "bookmarks"],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+    {
+        "matches": ["<all_urls>"],
+        "js": ["contentScript.js"]
+    }
+    ],
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self';"
     }
 }
