@@ -19,9 +19,17 @@
         "48": "/images/chrome-icon.png",
         "128": "/images/chrome-icon.png"
     },
-    "permissions": ["tabs", "activeTab", "scripting", "storage", "bookmarks"],
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "scripting",
+        "storage",
+        "bookmarks",
+        "history"
+    ],
     "background": {
-        "service_worker": "background.js"
+      "service_worker": "background.js",
+      "type": "module"
     },
     "content_scripts": [
     {
@@ -29,7 +37,10 @@
         "js": ["contentScript.js"]
     }
     ],
+    "host_permissions": [
+      "<all_urls>"
+    ],
     "content_security_policy": {
-        "extension_pages": "script-src 'self'; object-src 'self';"
+      "extension_pages": "script-src 'self'; object-src 'self';"
     }
 }
