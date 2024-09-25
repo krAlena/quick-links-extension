@@ -40,32 +40,18 @@ module.exports = {
                 }
             },
             {
-                test: /\.(less)$/,
+                test: /\.(sa|sc|c)ss$/, // to match .sass, .scss, and .css files
                 use: [
-                    {
-                        loader: 'style-loader',
-                        options: {
-                            injectType: 'styleTag'
-                        },
+                  "style-loader",
+                  {
+                    loader: "css-loader",
+                    options: {
+                      // https://webpack.js.org/loaders/css-loader#importloaders
+                      importLoaders: 2,
                     },
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            sourceMap: isDev,
-                            modules: {
-                                localIdentName: isDev ? "[path][name]_[local]-[hash:base64:5]" : '[local].[hash:base64:5]',
-                            },
-                        }
-                    },
-                    {
-                        loader: 'less-loader',
-                        options: {
-                            lessOptions: {
-                                sourceMap: isDev,
-                                modules: true,
-                            }
-                        },
-                    }
+                  },
+                  "postcss-loader",
+                  "sass-loader",
                 ],
             },
             {
