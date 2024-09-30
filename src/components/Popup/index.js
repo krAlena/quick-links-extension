@@ -1,7 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {  TabPane, Tab, Button } from 'semantic-ui-react';
+import {  TabPane, Tab, Button, Menu } from 'semantic-ui-react';
 import "./popup.sass";
 import { CHROME_REQUEST } from '../../constants/CHROME_REQUEST';
+import CopySvgIcon from '../Icons/CopySvgIcon';
+import BookmarkBorderSvgIcon from '../Icons/BookmarkBorderSvgIcon';
+import HistorySvgIcon from '../Icons/HistorySvgIcon';
+import LinkItem from './LinkItem';
 
 export default function Popup({ }) {
   const [arrBookmarks, setArrBookmarks] = useState([]);
@@ -44,20 +48,36 @@ export default function Popup({ }) {
   };
 
   const panes = [
-    { menuItem: "Bookmarks", pane: <TabPane>
-        <div className="links-list bookmarks">
-          {
-            Array.isArray(arrBookmarks) && arrBookmarks.length > 0
-              ? arrBookmarks.map(el => <div className='link-row'><a href={el.url}>{el.title}</a></div>)
-              : null
-          }
-      </div>
-    </TabPane> },
-    { menuItem: 'History', pane: <TabPane>
-        <div className="links-list bookmarks">
+    { menuItem: (
+        <Menu.Item key="bookmarksItem">
+            <BookmarkBorderSvgIcon className='icon stroke-color'/>
+            <div className="tabTitle">Bookmarks</div>
+        </Menu.Item>
+      ),
+      key: "bookmarksTab",
+      pane:
+        <TabPane>
+          <div className="links-list flex-col bookmarks">
+            {
+              Array.isArray(arrBookmarks) && arrBookmarks.length > 0
+                ? arrBookmarks.map(el => <LinkItem linkObj={el}/>)
+                : null
+            }
+          </div>
+        </TabPane>
+    },
+    { menuItem: (
+        <Menu.Item key="historyItem">
+            <HistorySvgIcon className='icon'/>
+            <div className="tabTitle">History</div>
+        </Menu.Item>
+      ),
+      key: "historyTab",
+      pane: <TabPane>
+        <div className="links-list flex-col bookmarks">
           {
             Array.isArray(arrHistoryLinks) && arrHistoryLinks.length > 0
-              ? arrHistoryLinks.map(el => <div className='link-row'><a href={el.url}>{el.title}</a></div>)
+              ? arrHistoryLinks.map(el => <LinkItem linkObj={el}/>)
               : null
           }
         </div>

@@ -1,0 +1,105 @@
+@import "variables"
+@import "mixins"
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, a,
+abbr, acronym, address, big, cite, code, del,
+dfn, em, img, ins, kbd, q, s, samp, small,
+strike, strong, sub, sup, tt, var, b, u, i,
+center, dl, dt, dd, ol, ul, li, fieldset,
+form, label, legend, table, caption, tbody,
+tfoot, thead, tr, th, td, article, aside,
+canvas, details, embed, figure, figcaption,
+footer, header, hgroup, main, menu, nav, output,
+ruby, section, summary, time, mark, audio, video,
+input
+  font-family: $main-font
+
+*
+  outline: none!important
+
+.full-width
+    width: 100%
+.flex-row
+  @include flex()
+  flex-direction: row
+.flex-col
+  @include flex()
+  flex-direction: column
+.space-between
+  @include flex()
+  justify-content: space-between !important
+
+.half-width
+    width: 50%
+
+.main-info
+  max-width: 100%
+.uppercase
+  text-transform: uppercase
+.description
+  &.medium
+    font-size: 20px
+    line-height: 28px
+  &.white
+    color: $color-light
+svg.icon,
+.icon
+  height: $icon-size
+  width: $icon-size
+  min-width: $icon-size
+  margin: 0px 4px
+  cursor: pointer
+  &:before
+    content: ''
+    position: absolute
+    top: -10px
+    right: -10px
+    bottom: -10px
+    left: -10px
+    cursor: pointer
+  &.disabled
+    opacity: 0.6
+    pointer-events: none
+    > *
+      pointer-events: none
+  &.without-margin
+    margin: 0px
+  &.without-margin-left
+    margin: 0px 0px
+    margin-right: $margin-quarter-value
+  &.without-margin-right
+    margin: 0px 0px
+    margin-left: $margin-quarter-value
+  &.margin-left-zero
+    margin-left: 0px
+
+  &.stroke-color,
+  &.stroke-fill-color
+    path
+      stroke: $icon-color !important
+    circle
+      stroke: $icon-color !important
+    rect
+      stroke: $icon-color !important
+    &.white
+      @include colored_stroke_icon(white)
+    &.green
+      @include colored_stroke_icon($color-green-meadow)
+    &.red
+      @include colored_stroke_icon($color-red-mint)
+    &.hover-green
+      &:hover
+        @include colored_stroke_icon($color-green-meadow)
+    &.hover-red
+      &:hover
+        @include colored_stroke_icon($color-red-mint)
+  &:not(.without-def-color):not(.stroke-color)
+    path
+      fill: $icon-color !important
+    circle
+      fill: $icon-color !important
+    rect
+      fill: $icon-color !important
+    &.white
+      @include colored_icon(white)

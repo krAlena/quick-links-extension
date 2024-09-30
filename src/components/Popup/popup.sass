@@ -1,6 +1,61 @@
+@import "../../styles/variables"
+@import "../../styles/mixins"
+@import "../../styles/default"
+
+*
+  margin: 0
+  padding: 0
+  outline: none !important
+  box-sizing: border-box !important
+  font-family: $main-font
+.popup-container
+    border: none
+    box-shadow: none
+    background-color: green
+    overflow: hidden
+    width: 100% !important
+    height: 100% !important
 body,html
-    height: 250px
-    width: 600px
-#root
-    height: 250px
-    width: 600px
+    overflow: hidden !important
+    border: none !important
+    box-shadow: none !important
+    height: 400px !important
+    width: 600px !important
+    all: unset
+    background-color: red
+    margin: 0
+    padding: 0
+    box-sizing: border-box !important
+    outline: none !important
+    #root
+        height: 100%
+        width: 100%
+        background: white
+        overflow: hidden
+        outline: none !important
+        border: none !important
+        border-radius: 0px
+    .ui.bottom.attached.segment.active.tab
+        background: white
+    .ui.tabular.menu
+        .active.item
+            font-family: $main-font
+            color: $color-brown-dark
+    .links-list
+        gap: $margin-half-value
+        .link-row
+            height: 34px
+            border: 1px solid $color-brown-dark
+            border-radius: $border-radius
+            background: $color-beige
+            padding: $padding-quarter-value $padding-half-value
+            cursor: pointer
+            .title
+                width: calc(100% - 72px)
+                @include line_dot()
+            .icons-block
+                display: none
+                gap: 12px
+            &:hover
+                .icons-block
+                    display: flex
