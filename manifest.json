@@ -7,17 +7,17 @@
         "default_popup": "popup.html",
         "default_title": "Quick browser's links",
         "default_icon": {
-            "16": "/images/chrome-icon.png",
-            "32": "/images/chrome-icon.png",
-            "48": "/images/chrome-icon.png",
-            "128": "/images/chrome-icon.png"
+            "16": "/images/links-16.png",
+            "32": "/images/links-32.png",
+            "48": "/images/links-48.png",
+            "128": "/images/links-128.png"
         }
     },
     "icons": {
-        "16": "/images/chrome-icon.png",
-        "32": "/images/chrome-icon.png",
-        "48": "/images/chrome-icon.png",
-        "128": "/images/chrome-icon.png"
+        "16": "/images/links-16.png",
+        "32": "/images/links-32.png",
+        "48": "/images/links-48.png",
+        "128": "/images/links-128.png"
     },
     "permissions": [
         "tabs",

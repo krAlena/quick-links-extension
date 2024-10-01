@@ -35,8 +35,16 @@ body,html
         outline: none !important
         border: none !important
         border-radius: 0px
+        position: relative
+        > div
+            height: 100%
+            @include flex()
+            flex-direction: column
     .ui.bottom.attached.segment.active.tab
         background: white
+        height: calc( 100% - 40px)
+        overflow-y: auto
+        margin-bottom: 0px
     .ui.tabular.menu
         .active.item
             font-family: $main-font
