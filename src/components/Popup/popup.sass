@@ -8,6 +8,33 @@
   outline: none !important
   box-sizing: border-box !important
   font-family: $main-font
+::-webkit-scrollbar
+    width: 2px
+    height: 2px
+::-webkit-scrollbar-thumb
+    border-radius: 1px !important
+    background: $color-beige
+
+body *
+    scrollbar-width: thin !important
+    scrollbar-color: $color-beige white
+// ::-webkit-scrollbar
+//     width: 14px
+//     background: transparent
+// ::-webkit-scrollbar-track
+//     box-shadow: inset 0 0 10px 10px green
+//     border-right: solid 10px transparent
+//     margin-right: 10px
+//     background: transparent
+// ::-webkit-scrollbar-thumb,
+// ::-webkit-scrollbar-thumb:window-inactive
+//     box-shadow: inset 0 0 10px 10px red
+//     background: transparent
+//     border-right: solid 10px transparent
+//     &:hover
+//         background: transparent
+//         box-shadow: inset 0 0 10px 10px yellow
+
 .popup-container
     border: none
     box-shadow: none
@@ -42,13 +69,31 @@ body,html
             flex-direction: column
     .ui.bottom.attached.segment.active.tab
         background: white
-        height: calc( 100% - 40px)
+        height: calc( 100% - 40px - 32px)
         overflow-y: auto
         margin-bottom: 0px
+        border: none
+        margin-top: 12px
+        padding-top: 0px
     .ui.tabular.menu
-        .active.item
+        border: none
+        .item
             font-family: $main-font
             color: $color-brown-dark
+            border: none
+            font-weight: 700
+            &.active
+                &::after
+                    transition: all .5s ease
+                    background: $color-brown-dark
+                    content: ""
+                    display: block
+                    height: 2px
+                    width: 100%
+                    // margin-top: 6px
+                    position: absolute
+                    bottom: 0px
+                    margin-left: -20px
     .links-list
         gap: $margin-half-value
         .link-row
