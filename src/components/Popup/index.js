@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react';
-import {  TabPane, Tab, Button, Menu } from 'semantic-ui-react';
+import React, {useState, useEffect, Fragment} from 'react';
+import {  TabPane, Tab, Button, Menu, Input } from 'semantic-ui-react';
 import "./popup.sass";
 import { CHROME_REQUEST } from '../../constants/CHROME_REQUEST';
-import CopySvgIcon from '../Icons/CopySvgIcon';
 import BookmarkBorderSvgIcon from '../Icons/BookmarkBorderSvgIcon';
 import HistorySvgIcon from '../Icons/HistorySvgIcon';
 import LinkItem from './LinkItem';
+import SearchInput from '../Common/SearchInput';
 
 export default function Popup({ }) {
   const [arrBookmarks, setArrBookmarks] = useState([]);
@@ -47,6 +47,25 @@ export default function Popup({ }) {
 
   };
 
+  const loadMore = () => {
+
+  }
+
+  const searchBookmarks = (strSearch) => {
+    if (strSearch !== ""){
+      chrome.runtime.sendMessage({action: CHROME_REQUEST.searchByBookmarks, strSearch}, (response) => {
+        if (response.error) {
+          console.error(response.error);
+        } else {
+          setArrBookmarks(response.bookmarks);
+        }
+      });
+    }
+    else {
+      getBookmarks();
+    }
+  }
+
   const panes = [
     { menuItem: (
         <Menu.Item key="bookmarksItem">
@@ -57,10 +76,16 @@ export default function Popup({ }) {
       key: "bookmarksTab",
       pane:
         <TabPane>
+          <div className='search-bar full-width'>
+            <SearchInput searchAction={strSearch => searchBookmarks(strSearch)}/>
+          </div>
           <div className="links-list flex-col bookmarks">
             {
               Array.isArray(arrBookmarks) && arrBookmarks.length > 0
-                ? arrBookmarks.map(el => <LinkItem linkObj={el}/>)
+                ? <Fragment>
+                    {arrBookmarks.map(el => <LinkItem linkObj={el}/>)}
+                    {/* <button onClick={loadMore}>Load more</button> */}
+                  </Fragment>
                 : null
             }
           </div>

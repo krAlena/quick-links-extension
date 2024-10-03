@@ -1,0 +1,19 @@
+@import "../../styles/variables"
+@import "../../styles/mixins"
+
+.ui.small.icon.input
+    margin-left: 0px
+    input
+        height: 34px
+        width: 200px
+        min-width: 200px
+        border-radius: 16px
+        border: 1px solid $color-brown-medium
+        color: $color-brown-dark
+        @include placeholder($color-gray, $main-font, $description-font-size, 300)
+    svg.icon.search
+        margin-left: -30px
+        margin-top: 9px
+        @include colored_icon($icon-color)
+        &.gray
+            @include colored_icon($color-gray)

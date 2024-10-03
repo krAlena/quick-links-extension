@@ -20,6 +20,14 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         });
         return true; // Indicate that the response will be sent asynchronously
     }
+    else if (request.action === "searchByBookmarks"){
+      console.log('search in bckg')
+      chrome.bookmarks.search(request.strSearch, function(response) {
+        console.log(response); // Bookmarks that match the keyword
+        sendResponse({bookmarks: response});
+      });
+      return true; // Indicate that the response will be sent asynchronously
+    }
     else if (request.action === "getHistoryLinks"){
         // Define the query parameters
         let query = {
