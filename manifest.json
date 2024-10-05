@@ -39,11 +39,7 @@
     ],
     "host_permissions": [
       "<all_urls>"
-    ],
-    "options_ui": {
-        "chrome_style": true,
-        "open_in_tab": true
-    }
+    ]
 }
     // "content_security_policy": {
     //   "extension_pages": "script-src 'self'; object-src 'self';"

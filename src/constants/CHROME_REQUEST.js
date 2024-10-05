@@ -4,3 +4,5 @@ export const CHROME_REQUEST = {
     getHistoryLinks: 'getHistoryLinks',
     searchByBookmarks: 'searchByBookmarks'
 };
+
+export const PORTION_RESULT_TO_DRAW = 10;

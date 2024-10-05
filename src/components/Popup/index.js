@@ -6,6 +6,8 @@ import BookmarkBorderSvgIcon from '../Icons/BookmarkBorderSvgIcon';
 import HistorySvgIcon from '../Icons/HistorySvgIcon';
 import LinkItem from './LinkItem';
 import SearchInput from '../Common/SearchInput';
+import LinksTab from './LinksTab';
+import { LINK_ROW_MODE } from '../../constants/LINK_ROW_MODE';
 
 export default function Popup({ }) {
   const [arrBookmarks, setArrBookmarks] = useState([]);
@@ -27,6 +29,7 @@ export default function Popup({ }) {
 
   const getHistory = (strSearch="") => {
     chrome.runtime.sendMessage({action: CHROME_REQUEST.getHistoryLinks, strSearch}, (response) => {
+      console.log(response)
       if (response.error) {
         console.error(response.error);
       } else {
@@ -38,6 +41,7 @@ export default function Popup({ }) {
 
   const getBookmarks = () => {
     chrome.runtime.sendMessage({action: CHROME_REQUEST.getRecentBookmarks}, (response) => {
+      console.log(response)
       if (response.error) {
         console.error(response.error);
       } else {
@@ -54,6 +58,7 @@ export default function Popup({ }) {
   const searchBookmarks = (strSearch) => {
     if (strSearch !== ""){
       chrome.runtime.sendMessage({action: CHROME_REQUEST.searchByBookmarks, strSearch}, (response) => {
+        console.log(response)
         if (response.error) {
           console.error(response.error);
         } else {
@@ -76,19 +81,7 @@ export default function Popup({ }) {
       key: "bookmarksTab",
       pane:
         <TabPane>
-          <div className='search-bar full-width'>
-            <SearchInput searchAction={strSearch => searchBookmarks(strSearch)}/>
-          </div>
-          <div className="links-list flex-col bookmarks">
-            {
-              Array.isArray(arrBookmarks) && arrBookmarks.length > 0
-                ? <Fragment>
-                    {arrBookmarks.map(el => <LinkItem linkObj={el}/>)}
-                    {/* <button onClick={loadMore}>Load more</button> */}
-                  </Fragment>
-                : null
-            }
-          </div>
+          <LinksTab arrLinks={arrBookmarks} functionSearch={searchBookmarks} mode={LINK_ROW_MODE.bookmarkLink}/>
         </TabPane>
     },
     { menuItem: (
@@ -99,16 +92,7 @@ export default function Popup({ }) {
       ),
       key: "historyTab",
       pane: <TabPane>
-        <div className='search-bar full-width'>
-          <SearchInput searchAction={strSearch => getHistory(strSearch)}/>
-        </div>
-        <div className="links-list flex-col history-links">
-          {
-            Array.isArray(arrHistoryLinks) && arrHistoryLinks.length > 0
-              ? arrHistoryLinks.map(el => <LinkItem linkObj={el}/>)
-              : null
-          }
-        </div>
+        <LinksTab arrLinks={arrHistoryLinks} functionSearch={getHistory} mode={LINK_ROW_MODE.historyLink}/>
       </TabPane>
     }
   ]

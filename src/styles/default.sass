@@ -107,3 +107,14 @@ svg.icon,
       @include colored_icon(white)
     &.gray
       @include colored_icon($color-gray)
+.button
+  @include flex()
+  background-color: $color-brown-medium
+  color: #e6ddde
+  border: none
+  padding: 6px 24px
+  border-radius: 16px
+  cursor: pointer
+  transition: background-color .3s
+  &:hover
+    background-color: $color-brown-dark

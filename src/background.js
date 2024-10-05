@@ -11,7 +11,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       return true;  // Ensures the message channel stays open for async response
     }
     else if (request.action === "getRecentBookmarks") {
-        chrome.bookmarks.getRecent(10, (response) => {
+        chrome.bookmarks.getRecent(20, (response) => {
           if (chrome.runtime.lastError) {
             sendResponse({error: chrome.runtime.lastError.message});
           } else {
@@ -33,7 +33,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         let query = {
           text: request.strSearch, // Empty string to retrieve all history
           startTime: 0, // Start time in milliseconds since epoch
-          maxResults: 10 // Number of results to return
+          maxResults: 20 // Number of results to return
         };
 
         // Query the history API

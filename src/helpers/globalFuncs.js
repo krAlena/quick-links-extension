@@ -44,3 +44,44 @@ export function sumObjFieldByArr(arrObjs, fieldName){
 
     return result;
 }
+
+export function getDateTimeInStrFormat(dateTimeStr){
+    var dateTimeStrInNeedFormat = "";
+    if (dateTimeStr != null){
+        var dateTime = new Date(dateTimeStr);
+        var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
+            "Aug", "Sep", "Oct", "Nov", "Dec"];
+        var day = dateTime.getDate();
+        var monthIndex = dateTime.getMonth();
+        var year = dateTime.getFullYear();
+        var hours = dateTime.getHours();
+        hours = ("00" + hours ).slice(-2);
+
+        var mins = dateTime.getMinutes();
+        mins = ("00" + mins ).slice(-2);
+        //dateTimeStrInNeedFormat = day + ' ' + monthNames[monthIndex] + ' ' + year;
+        //monthIndex = (monthIndex + 1);
+        //var monthNumber = ("00" + monthIndex).slice(-2);
+
+        //dateTimeStrInNeedFormat = year + '-' + monthNumber + '-' + day;
+        dateTimeStrInNeedFormat = monthNames[monthIndex] + ' ' + day + ' ' +  year + ' ' + hours + ':' + mins;                    
+
+    }
+    return dateTimeStrInNeedFormat;
+}
+
+export function getDateFromTimestamp(timestamp){
+    var utcSeconds = timestamp;
+    var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
+    d.setUTCSeconds(utcSeconds);
+    var datePayment = new Date(d);
+    var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
+            "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var day = datePayment.getDate();
+    var monthIndex = datePayment.getMonth();
+    var year = datePayment.getFullYear();
+    monthIndex = (monthIndex + 1);
+    var paymentDateInNeedFormat = monthIndex + "/" + day + "/" + year;
+
+    return paymentDateInNeedFormat;
+}
