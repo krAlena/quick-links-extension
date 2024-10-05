@@ -25,8 +25,8 @@ export default function Popup({ }) {
     });
   }
 
-  const getHistory = () => {
-    chrome.runtime.sendMessage({action: CHROME_REQUEST.getHistoryLinks}, (response) => {
+  const getHistory = (strSearch="") => {
+    chrome.runtime.sendMessage({action: CHROME_REQUEST.getHistoryLinks, strSearch}, (response) => {
       if (response.error) {
         console.error(response.error);
       } else {
@@ -99,7 +99,10 @@ export default function Popup({ }) {
       ),
       key: "historyTab",
       pane: <TabPane>
-        <div className="links-list flex-col bookmarks">
+        <div className='search-bar full-width'>
+          <SearchInput searchAction={strSearch => getHistory(strSearch)}/>
+        </div>
+        <div className="links-list flex-col history-links">
           {
             Array.isArray(arrHistoryLinks) && arrHistoryLinks.length > 0
               ? arrHistoryLinks.map(el => <LinkItem linkObj={el}/>)

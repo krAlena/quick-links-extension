@@ -31,7 +31,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     else if (request.action === "getHistoryLinks"){
         // Define the query parameters
         let query = {
-          text: '', // Empty string to retrieve all history
+          text: request.strSearch, // Empty string to retrieve all history
           startTime: 0, // Start time in milliseconds since epoch
           maxResults: 10 // Number of results to return
         };

@@ -26,7 +26,7 @@ const goToLink = () => {
 
 return (
     <div className='link-row flex-row full-width space-between'>
-        <div className='title'>{linkObj.title}</div>
+        <div className='title'>{linkObj.title !== "" ? linkObj.title : linkObj.url }</div>
         <div className="icons-block flex-row">
             <CopySvgIcon className='icon' onClick={copyLink}/>
             <GoToSvgIcon className='icon' onClick={goToLink}/>
