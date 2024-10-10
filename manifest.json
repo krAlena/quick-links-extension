@@ -2,7 +2,7 @@
     "version": "1.0.0",
     "manifest_version": 3,
     "name": "Quick browser's links",
-    "description": "Manage your last history and favorite links",
+    "description": "Quickly search and access your favorite links or recently visited websites.",
     "action": {
         "default_popup": "popup.html",
         "default_title": "Quick browser's links",
@@ -41,6 +41,3 @@
       "<all_urls>"
     ]
 }
-    // "content_security_policy": {
-    //   "extension_pages": "script-src 'self'; object-src 'self';"
-    // },
