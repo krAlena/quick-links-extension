@@ -1,11 +1,9 @@
-import React, {useState, useEffect, Fragment} from 'react';
-import {  TabPane, Tab, Button, Menu, Input } from 'semantic-ui-react';
+import React, {useState, useEffect} from 'react';
+import {  TabPane, Tab, Menu } from 'semantic-ui-react';
 import "./popup.sass";
 import { CHROME_REQUEST } from '../../constants/CHROME_REQUEST';
 import BookmarkBorderSvgIcon from '../Icons/BookmarkBorderSvgIcon';
 import HistorySvgIcon from '../Icons/HistorySvgIcon';
-import LinkItem from './LinkItem';
-import SearchInput from '../Common/SearchInput';
 import LinksTab from './LinksTab';
 import { LINK_ROW_MODE } from '../../constants/LINK_ROW_MODE';
 
@@ -29,7 +27,6 @@ export default function Popup({ }) {
 
   const getHistory = (strSearch="") => {
     chrome.runtime.sendMessage({action: CHROME_REQUEST.getHistoryLinks, strSearch}, (response) => {
-      console.log(response)
       if (response.error) {
         console.error(response.error);
       } else {
@@ -41,7 +38,6 @@ export default function Popup({ }) {
 
   const getBookmarks = () => {
     chrome.runtime.sendMessage({action: CHROME_REQUEST.getRecentBookmarks}, (response) => {
-      console.log(response)
       if (response.error) {
         console.error(response.error);
       } else {
@@ -58,7 +54,6 @@ export default function Popup({ }) {
   const searchBookmarks = (strSearch) => {
     if (strSearch !== ""){
       chrome.runtime.sendMessage({action: CHROME_REQUEST.searchByBookmarks, strSearch}, (response) => {
-        console.log(response)
         if (response.error) {
           console.error(response.error);
         } else {

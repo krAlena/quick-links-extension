@@ -1,6 +1,5 @@
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === "injectScript") {
-      console.log('inject script')
       chrome.scripting.executeScript({
         target: { tabId: request.tabId },
         files: ['contentScript.js']
@@ -21,9 +20,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         return true; // Indicate that the response will be sent asynchronously
     }
     else if (request.action === "searchByBookmarks"){
-      console.log('search in bckg')
       chrome.bookmarks.search(request.strSearch, function(response) {
-        console.log(response); // Bookmarks that match the keyword
         sendResponse({bookmarks: response});
       });
       return true; // Indicate that the response will be sent asynchronously
