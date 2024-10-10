@@ -1,0 +1,41 @@
+@import "variables"
+@import "mixins"
+
+.tags-list
+    @include flex()
+    .tag
+        margin-right: $margin-quarter-value
+        background: white
+        border-radius: 6px //$border-radius
+        padding: 2px 12px
+        height: 21px //1.78px
+        border: 1px solid $color-brown-light
+        cursor: pointer
+        @include flex()
+        max-width: 100%
+        &.medium
+            height: 25px
+            align-items: center
+        &__text
+            color: $color-brown-dark
+            font-weight: 400
+            font-size: 13px
+            line-height: 14.3px
+            font-family: $main-font
+        &__del
+            @include flex()
+            align-items: center
+            .icon
+                height: 8px !important
+                width: 8px !important
+        &.with-del
+            padding-right: 0px !important
+            .tag__text
+                width: calc(100% - 24px)
+                flex-grow: 1
+                @include line_dot()
+        &.active
+            padding: 3px 12px
+            padding-bottom: 2px
+            background: $color-gray
+            border: none

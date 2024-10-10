@@ -92,6 +92,7 @@ body,html
     .search-bar
         height: 58px
         padding-top: 6px
+        position: relative
     .links-list
         gap: $margin-half-value
         overflow-y: auto
@@ -122,8 +123,8 @@ body,html
                     width: 100%
                     @include line_dot()
             .time-block
-                width: 60px
-                min-width: 60px
+                width: 62px
+                min-width: 62px
                 flex-wrap: wrap
                 @include flex()
                 line-height: 14px
@@ -133,9 +134,36 @@ body,html
                 display: none
                 gap: 6px
                 align-items: center
+                position: relative
+                .checkmark-parent
+                    left: 0px
+                    position: absolute
+                    align-items: center
+                    @include flex()
+                    justify-content: center
+                    border-radius: 50%
+                    height: 26px
+                    width: 26px
+                    background: white
+                    opacity: 0
+                    z-index: 0
+                    @include transition(all, 0.3s, ease-in-out)
+                    &.visible
+                        z-index: 2
+                        opacity: 0.7
+                    .checkmark
+                        margin-top: -2px
+                        display: inline-block
+                        transform: rotate(45deg)
+                        height: 16px
+                        width: 8px
+                        border-bottom: 2px solid $color-brown-medium
+                        border-right: 2px solid $color-brown-medium
             &:hover
                 .icons-block
                     display: flex
+                    .icon
+                        z-index: 1
         .load-more
             margin-bottom: 6px
             justify-content: center

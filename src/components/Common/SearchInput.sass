@@ -1,6 +1,12 @@
 @import "../../styles/variables"
 @import "../../styles/mixins"
+@import "../../styles/tags"
 
+.tags-list
+    position: absolute
+    top: 13px
+    left: 8px
+    max-width: 156px
 .ui.small.icon.input
     margin-left: 0px
     input
@@ -10,10 +16,10 @@
         border-radius: 16px
         border: 1px solid $color-brown-medium
         color: $color-brown-dark
-        @include placeholder($color-gray, $main-font, $description-font-size, 300)
+        @include placeholder($color-beige-gray, $main-font, $description-font-size, 300)
     svg.icon.search
         margin-left: -30px
         margin-top: 9px
         @include colored_icon($icon-color)
         &.gray
-            @include colored_icon($color-gray)
+            @include colored_icon($color-beige-gray)
