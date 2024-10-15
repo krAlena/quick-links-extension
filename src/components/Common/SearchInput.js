@@ -65,10 +65,10 @@ const SearchInput = ({searchAction}) => {
                 <div className="tag__text">
                   {strSearch}
                 </div>
-                <div className="tag__del"
+                <div className="tag__del btn"
                     onClick={handleClearSearch}
                 >
-                  <CloseSvgIcon className="icon btn close hover-blue small"/>
+                  <CloseSvgIcon className="icon btn close hover-red small"/>
                 </div>
               </div>
             </div>

@@ -12,17 +12,12 @@ export default function Popup({ }) {
   const [arrHistoryLinks, setArrHistoryLinks] = useState([]);
 
   useEffect(() => {
-    injectScript()
+    initialDataLoading()
   }, [])
 
-  const injectScript = () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      let activeTab = tabs[0];
-      chrome.runtime.sendMessage({ action: CHROME_REQUEST.injectScript, tabId: activeTab.id}, function(response) {
-        getBookmarks();
-        getHistory();
-      });
-    });
+  const initialDataLoading = () => {
+    getBookmarks();
+    getHistory();
   }
 
   const getHistory = (strSearch="") => {
@@ -66,6 +61,17 @@ export default function Popup({ }) {
     }
   }
 
+  const delLink = (id, mode) => {
+    if (mode === LINK_ROW_MODE.bookmarkLink){
+      let newArrBookmarks = arrBookmarks.filter(el => el.id !== id )
+      setArrBookmarks(newArrBookmarks);
+    }
+    else if (mode === LINK_ROW_MODE.historyLink){
+      let newArrHistoryLinks = arrHistoryLinks.filter(el => el.id !== id )
+      setArrHistoryLinks(newArrHistoryLinks);
+    }
+  }
+
   const panes = [
     { menuItem: (
         <Menu.Item key="bookmarksItem">
@@ -76,7 +82,7 @@ export default function Popup({ }) {
       key: "bookmarksTab",
       pane:
         <TabPane>
-          <LinksTab arrLinks={arrBookmarks} functionSearch={searchBookmarks} mode={LINK_ROW_MODE.bookmarkLink}/>
+          <LinksTab arrLinks={arrBookmarks} functionSearch={searchBookmarks} mode={LINK_ROW_MODE.bookmarkLink} functionDelLink={id => delLink(id, LINK_ROW_MODE.bookmarkLink)}/>
         </TabPane>
     },
     { menuItem: (
@@ -87,7 +93,7 @@ export default function Popup({ }) {
       ),
       key: "historyTab",
       pane: <TabPane>
-        <LinksTab arrLinks={arrHistoryLinks} functionSearch={getHistory} mode={LINK_ROW_MODE.historyLink}/>
+        <LinksTab arrLinks={arrHistoryLinks} functionSearch={getHistory} mode={LINK_ROW_MODE.historyLink} functionDelLink={id => delLink(id, LINK_ROW_MODE.historyLink)}/>
       </TabPane>
     }
   ]

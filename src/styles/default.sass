@@ -23,15 +23,69 @@ input
 .flex-row
   @include flex()
   flex-direction: row
+  &.center
+    align-items: center
 .flex-col
   @include flex()
   flex-direction: column
+  &.center
+    align-items: center
 .space-between
   @include flex()
   justify-content: space-between !important
 
 .half-width
-    width: 50%
+  width: 50%
+
+.padding-top
+  padding-top: $padding-half-value
+  &-small
+    padding-top: $padding-quarter-value
+  &-big
+    padding-top: $padding-value
+.padding-bottom
+  padding-bottom: $padding-half-value
+  &-small
+    padding-bottom: $padding-quarter-value
+  &-big
+    padding-bottom: $padding-value
+.padding-left
+  padding-left: $padding-half-value
+  &-small
+    padding-left: $padding-quarter-value
+  &-big
+    padding-left: $padding-value
+.padding-right
+  padding-right: $padding-half-value
+  &-small
+    padding-right: $padding-quarter-value
+  &-big
+    padding-right: $padding-value
+
+.margin-top
+  margin-top: $margin-half-value
+  &-small
+    margin-top: $margin-quarter-value
+  &-big
+    margin-top: $margin-value
+.margin-bottom
+  margin-bottom: $margin-half-value
+  &-small
+    margin-bottom: $margin-quarter-value
+  &-big
+    margin-bottom: $margin-value
+.margin-left
+  margin-left: $margin-half-value
+  &-small
+    margin-left: $margin-quarter-value
+  &-big
+    margin-left: $margin-value
+.margin-right
+  margin-right: $margin-half-value
+  &-small
+    margin-right: $margin-quarter-value
+  &-big
+    margin-right: $margin-value
 
 .main-info
   max-width: 100%
@@ -107,6 +161,9 @@ svg.icon,
       @include colored_icon(white)
     &.gray
       @include colored_icon($color-beige-gray)
+    &.hover-red
+      &:hover
+        @include colored_icon($color-red-mint)
 .button
   @include flex()
   background-color: $color-brown-medium

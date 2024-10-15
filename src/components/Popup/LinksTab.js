@@ -4,7 +4,7 @@ import SearchInput from '../Common/SearchInput';
 import LinkItem from './LinkItem';
 
 
-export default function LinksTab({arrLinks, functionSearch, mode}) {
+export default function LinksTab({arrLinks, functionSearch, functionDelLink, mode}) {
     return(
         <>
             <div className='search-bar full-width'>
@@ -14,7 +14,7 @@ export default function LinksTab({arrLinks, functionSearch, mode}) {
                 {
                     isArrWithContent(arrLinks)
                         ?   <Fragment>
-                                {arrLinks.map(el => <LinkItem mode={mode} linkObj={el}/>)}
+                                {arrLinks.map(el => <LinkItem mode={mode} linkObj={el} callbackAfterDel={functionDelLink}/>)}
                                 {/* <div className='load-more flex-row'>
                                 <div className='button' onClick={loadMore}>Load more</div>
                                 </div> */}

@@ -21,9 +21,6 @@
     },
     "permissions": [
         "tabs",
-        "activeTab",
-        "scripting",
-        "storage",
         "bookmarks",
         "history"
     ],

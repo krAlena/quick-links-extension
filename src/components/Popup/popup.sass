@@ -135,6 +135,12 @@ body,html
                 gap: 6px
                 align-items: center
                 position: relative
+                &.active
+                    display: flex
+                    .del-icon
+                        z-index: 1
+                        display: flex !important
+                        @include colored_icon($color-red-mint)
                 .checkmark-parent
                     left: 0px
                     position: absolute
