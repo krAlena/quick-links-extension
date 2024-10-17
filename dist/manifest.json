@@ -1,11 +1,11 @@
 {
     "version": "1.0.0",
     "manifest_version": 3,
-    "name": "Quick browser's links",
-    "description": "Quickly search and access your favorite links or recently visited websites.",
+    "name": "Quick links",
+    "description": "Quickly search and access your favorite browser's links or recently visited websites.",
     "action": {
         "default_popup": "popup.html",
-        "default_title": "Quick browser's links",
+        "default_title": "Quick links",
         "default_icon": {
             "16": "/images/links-16.png",
             "32": "/images/links-32.png",
@@ -20,21 +20,11 @@
         "128": "/images/links-128.png"
     },
     "permissions": [
-        "tabs",
         "bookmarks",
         "history"
     ],
     "background": {
       "service_worker": "background.js",
       "type": "module"
-    },
-    "content_scripts": [
-    {
-        "matches": ["<all_urls>"],
-        "js": ["contentScript.js"]
     }
-    ],
-    "host_permissions": [
-      "<all_urls>"
-    ]
 }

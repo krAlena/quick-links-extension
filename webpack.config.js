@@ -82,7 +82,6 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 {from: path.join(__dirname, `./manifest.json`), to: path.join(__dirname, './dist/manifest.json')},
-                {from: path.join(__dirname, `./src/contentScript.js`), to: path.join(__dirname, './dist/contentScript.js')},
                 {from: path.join(__dirname, `./src/background.js`), to: path.join(__dirname, './dist/background.js')},
                 {from: path.join(__dirname, `./src/styles/semantic.min.css`), to: path.join(__dirname, './dist/styles/semantic.min.css')},
             ]
